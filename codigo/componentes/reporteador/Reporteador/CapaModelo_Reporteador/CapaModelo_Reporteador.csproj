@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CapaVista_BtnLimpiar_Reporteador">
+      <HintPath>..\..\BtnLimpiar_Reporteador\CapaVista_BtnLimpiar_Reporteador\bin\Debug\CapaVista_BtnLimpiar_Reporteador.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

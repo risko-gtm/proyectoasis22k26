@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{95EC77E7-9F73-4A95-8F52-B4D437BB95B0}</ProjectGuid>
+    <ProjectGuid>{5775F104-2A02-4776-B094-FD1084D0540A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CapaVista_Reportedor</RootNamespace>
-    <AssemblyName>CapaVista_Reportedor</AssemblyName>
+    <RootNamespace>CapaVista_Reporteador</RootNamespace>
+    <AssemblyName>CapaVista_Reporteador</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,14 +31,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaVista_BtnGuardar">
-      <HintPath>..\..\BtnGuardar\CapaVista_BtnGuardar\bin\Debug\CapaVista_BtnGuardar.dll</HintPath>
+    <Reference Include="CapaControlador_Reporteador">
+      <HintPath>..\CapaControlador_Reporteador\bin\Debug\CapaControlador_Reporteador.dll</HintPath>
     </Reference>
-    <Reference Include="CapaVista_BtnImprimir">
-      <HintPath>..\..\BtnImprimir\BtnImprimir\CapaVista_BtnImprimir\bin\Debug\CapaVista_BtnImprimir.dll</HintPath>
+    <Reference Include="CapaVista_BtnActualizar_Reporteador">
+      <HintPath>..\..\BtnActualizar_Reporteador\CapaVista_BtnActualizar_Reporteador\bin\Debug\CapaVista_BtnActualizar_Reporteador.dll</HintPath>
     </Reference>
-    <Reference Include="CapaVista_BtnRuta">
-      <HintPath>..\..\BtnRuta\CapaVista_BtnRuta\bin\Debug\CapaVista_BtnRuta.dll</HintPath>
+    <Reference Include="CapaVista_BtnBusqueda">
+      <HintPath>..\..\BtnBusqueda_Reporteador\CapaVista_BtnBusqueda\bin\Debug\CapaVista_BtnBusqueda.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnEditar_Reporteador">
+      <HintPath>..\..\BtnEditar_Reporteador\CapaVista_BtnEditar_Reporteador\bin\Debug\CapaVista_BtnEditar_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnEliminar_Reporteador">
+      <HintPath>..\..\BtnEliminar_Reporteador\CapaVista_BtnEliminar_Reporteador\bin\Debug\CapaVista_BtnEliminar_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnGuardar_Reporteador">
+      <HintPath>..\..\BtnGuardar_Reporteador\CapaVista_BtnGuardar_Reporteador\bin\Debug\CapaVista_BtnGuardar_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnLimpiar_Reporteador">
+      <HintPath>..\..\BtnLimpiar_Reporteador\CapaVista_BtnLimpiar_Reporteador\bin\Debug\CapaVista_BtnLimpiar_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnNuevo_Reporteador">
+      <HintPath>..\..\..\..\..\..\..\Proyecto\proyectoasis22k26-Reporteador\codigo\componentes\reporteador\BtnNuevo_Reporteador\CapaVista_BtnNuevo_Reporteador\bin\Debug\CapaVista_BtnNuevo_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnRuta_Reporteador">
+      <HintPath>..\..\BtnRuta_Reporteador\CapaVista_BtnRuta_Reporteador\bin\Debug\CapaVista_BtnRuta_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_BtnVerReporte_Reporteador">
+      <HintPath>..\..\BtnVerReporte_Reporteador\CapaVista_BtnVerReporte_Reporteador\bin\Debug\CapaVista_BtnVerReporte_Reporteador.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -71,6 +92,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Formas\FrmReportes.resx">
       <DependentUpon>FrmReportes.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,20 +104,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Resources\banner_Reporteador.png" />
+    <None Include="Resources\Footer_reporteador.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Footer_reporteador.png" />
+    <None Include="Resources\banner_Reporteador.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\img_mascota.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaControlador_Reporteador\CapaControlador_Reporteador.csproj">
-      <Project>{ff630104-a798-4efb-9ff2-e84355a84b93}</Project>
-      <Name>CapaControlador_Reporteador</Name>
+    <ProjectReference Include="..\CapaModelo_Reporteador\CapaModelo_Reporteador.csproj">
+      <Project>{BF2AE373-E969-4939-AA73-FD4535DC5C9C}</Project>
+      <Name>CapaModelo_Reporteador</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_ayuda.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

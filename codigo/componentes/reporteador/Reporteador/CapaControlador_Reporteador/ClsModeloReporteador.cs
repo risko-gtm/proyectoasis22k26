@@ -1,377 +1,257 @@
-﻿using CapaModelo_Reporteador.Contratos;
-using CapaModelo_Reporteador.Entidades;
+﻿using CapaModelo_Reporteador.Entidades;
 using CapaModelo_Reporteador.Repositorios;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Data.Odbc;
 
 namespace CapaControlador_Reporteador
 {
     public class ClsModeloReporteador
     {
-        private int _numeroReporte = 0;
-        private string _nombreReporte;
-        private string _rutaReporte;
-        private DateTime _fechaReporte =
-            DateTime.Now.Date;
+        public int NumeroReporte { get; set; }
 
-        private readonly ClsIRepositorioReporteador
-            RepositorioReporteador;
+        public int IdAplicacion { get; set; }
 
-        private List<ClsModeloReporteador>
-            ListaReportes;
+        public string NombreReporte { get; set; }
 
+        public string RutaReporte { get; set; }
 
-        public int CodigoModulo { get; set; } = 30;
-
+        public DateTime FechaReporte { get; set; }
 
         public ClsEstadoEntidad Estado { get; set; }
 
-
-
-        public int NumeroReporte
-        {
-            get
-            {
-                if (_numeroReporte <= 0 &&
-                    Estado == ClsEstadoEntidad.Added)
-                {
-                    _numeroReporte =
-                        GenerarSiguienteNumeroReporte(
-                            CodigoModulo
-                        );
-                }
-
-                return _numeroReporte;
-            }
-
-            set
-            {
-                _numeroReporte = value;
-            }
-        }
-
-
-        [Required(
-            ErrorMessage =
-                "El nombre del reporte es requerido."
-        )]
-        [StringLength(
-            150,
-            ErrorMessage =
-                "El nombre del reporte no puede superar los 150 caracteres."
-        )]
-        public string NombreReporte
-        {
-            get
-            {
-                return _nombreReporte;
-            }
-
-            set
-            {
-                _nombreReporte = value;
-            }
-        }
-
-        [Required(
-            ErrorMessage =
-                "La ruta del reporte es requerida."
-        )]
-        [StringLength(
-            500,
-            ErrorMessage =
-                "La ruta del reporte no puede superar los 500 caracteres."
-        )]
-        public string RutaReporte
-        {
-            get
-            {
-                return _rutaReporte;
-            }
-
-            set
-            {
-                _rutaReporte = value;
-            }
-        }
-
-
-
-        [Required(
-            ErrorMessage =
-                "La fecha del reporte es requerida."
-        )]
-        public DateTime FechaReporte
-        {
-            get
-            {
-                return _fechaReporte;
-            }
-
-            set
-            {
-                _fechaReporte = value;
-            }
-        }
+        private readonly ClsRepositorioReporteador _Repositorio;
 
         public ClsModeloReporteador()
         {
-            RepositorioReporteador =
+            _Repositorio =
                 new ClsRepositorioReporteador();
-
-            Estado =
-                ClsEstadoEntidad.Added;
         }
 
+        // ============================================================
+        // OBTENER SIGUIENTE NÚMERO DE REPORTE
+        // ============================================================
 
-        public int GenerarSiguienteNumeroReporte(
-            int codigoModulo)
+        public int ReporteadorMetObtenerSiguienteNumeroReporte(
+            int CodigoModulo)
         {
-            int ultimoId =
-                RepositorioReporteador
-                .ObtenerMaximoNumeroReporte(
-                    codigoModulo
-                );
+            int MaximoNumero =
+                _Repositorio
+                .ReporteadorMetObtenerMaximoNumeroReporte(
+                    CodigoModulo);
 
-            if (ultimoId == 0)
+            // Si todavía no existen reportes del módulo 3000,
+            // el primer número será 3001.
+            if (MaximoNumero < CodigoModulo)
             {
-                return (codigoModulo * 100) + 1;
+                return CodigoModulo + 1;
             }
 
-            return ultimoId + 1;
+            // Si ya existen reportes, continúa desde el siguiente.
+            return MaximoNumero + 1;
         }
 
+        // ============================================================
+        // GUARDAR / ACTUALIZAR
+        // ============================================================
 
-
-        private string ValidarDatos()
-        {
-            var resultados =
-                new List<ValidationResult>();
-
-            var contexto =
-                new ValidationContext(this);
-
-            bool valido =
-                Validator.TryValidateObject(
-                    this,
-                    contexto,
-                    resultados,
-                    true
-                );
-
-            if (!valido)
-            {
-                string mensaje = "";
-
-                foreach (ValidationResult resultado
-                         in resultados)
-                {
-                    mensaje +=
-                        resultado.ErrorMessage +
-                        Environment.NewLine;
-                }
-
-                return mensaje.Trim();
-            }
-
-            if (_numeroReporte <= 0)
-            {
-                return
-                    "El número del reporte no es válido.";
-            }
-
-            if (_fechaReporte == DateTime.MinValue)
-            {
-                return
-                    "La fecha del reporte no es válida.";
-            }
-
-            return null;
-        }
-
-
-        public string GrabarCambios()
+        public string ReporteadorMetGuardarReporte()
         {
             try
             {
-                // Generar número si es nuevo
-                if (Estado ==
-                        ClsEstadoEntidad.Added &&
-                    _numeroReporte <= 0)
+                if (IdAplicacion <= 0)
                 {
-                    _numeroReporte =
-                        GenerarSiguienteNumeroReporte(
-                            CodigoModulo
-                        );
+                    return
+                        "Debe seleccionar una aplicación antes de guardar el reporte.";
                 }
 
-
-                // Validar
-                string error =
-                    ValidarDatos();
-
-                if (!string.IsNullOrWhiteSpace(error))
+                if (NumeroReporte <= 0)
                 {
-                    return error;
+                    return
+                        "El número de reporte debe ser mayor que cero.";
                 }
 
-
-                // Crear entidad
-                ClsReporteador reporte =
-                    new ClsReporteador
-                    {
-                        NumeroReporte =
-                            _numeroReporte,
-
-                        NombreReporte =
-                            _nombreReporte,
-
-                        RutaReporte =
-                            _rutaReporte,
-
-                        FechaReporte =
-                            _fechaReporte.Date
-                    };
-
-
-                if (Estado ==
-                    ClsEstadoEntidad.Added)
+                if (string.IsNullOrWhiteSpace(
+                    NombreReporte))
                 {
-                    RepositorioReporteador.Agregar(
-                        reporte
-                    );
-
-                    return "Grabación exitosa";
+                    return
+                        "Debe ingresar el nombre del reporte.";
                 }
 
+                if (string.IsNullOrWhiteSpace(
+                    RutaReporte))
+                {
+                    return
+                        "Debe seleccionar el archivo del reporte.";
+                }
+
+                NombreReporte =
+                    NombreReporte.Trim();
+
+                RutaReporte =
+                    RutaReporte.Trim();
+
+                int? NumeroReporteExcluir = null;
 
                 if (Estado ==
                     ClsEstadoEntidad.Modified)
                 {
-                    RepositorioReporteador.Editar(
-                        reporte
-                    );
+                    NumeroReporteExcluir =
+                        NumeroReporte;
+                }
+
+                // ----------------------------------------------------
+                // VALIDAR NÚMERO
+                // ----------------------------------------------------
+
+                if (_Repositorio
+                    .ReporteadorMetExisteNumeroReporte(
+                        NumeroReporte,
+                        NumeroReporteExcluir))
+                {
+                    return
+                        "El número de reporte ya existe. No se puede guardar.";
+                }
+
+                // ----------------------------------------------------
+                // VALIDAR NOMBRE
+                // ----------------------------------------------------
+
+                if (_Repositorio
+                    .ReporteadorMetExisteNombreReporte(
+                        NombreReporte,
+                        NumeroReporteExcluir))
+                {
+                    return
+                        "El nombre del reporte ya existe. No se puede guardar.";
+                }
+
+                // ----------------------------------------------------
+                // VALIDAR RUTA
+                // ----------------------------------------------------
+
+                if (_Repositorio
+                    .ReporteadorMetExisteRutaReporte(
+                        RutaReporte,
+                        NumeroReporteExcluir))
+                {
+                    return
+                        "La ruta del reporte ya está registrada. No se puede guardar.";
+                }
+
+                ClsReporteador Reporte =
+                    new ClsReporteador();
+
+                Reporte.NumeroReporte =
+                    NumeroReporte;
+
+                Reporte.NombreReporte =
+                    NombreReporte;
+
+                Reporte.RutaReporte =
+                    RutaReporte;
+
+                Reporte.FechaReporte =
+                    FechaReporte;
+
+                // ----------------------------------------------------
+                // EDITAR
+                // ----------------------------------------------------
+
+                if (Estado ==
+                    ClsEstadoEntidad.Modified)
+                {
+                    _Repositorio
+                        .ReporteadorMetEditar(
+                            Reporte);
 
                     return "Actualización exitosa";
                 }
 
-                if (Estado ==
-                    ClsEstadoEntidad.Deleted)
-                {
-                    RepositorioReporteador.Remover(
-                        reporte
-                    );
+                // ----------------------------------------------------
+                // AGREGAR
+                // ----------------------------------------------------
 
-                    return "Eliminación exitosa";
+                if (Estado ==
+                    ClsEstadoEntidad.Added)
+                {
+                    _Repositorio
+                        .ReporteadorMetAgregar(
+                            Reporte,
+                            IdAplicacion);
+
+                    return "Grabación exitosa";
                 }
 
-
                 return
-                    "El estado del reporte no es válido.";
+                    "No se especificó una operación válida.";
             }
-            catch (Exception ex)
+            catch (OdbcException)
             {
-                return ex.Message;
+                return
+                    "No se pudo guardar el reporte. "
+                    + "Verifique el ID de aplicación y que "
+                    + "el número, nombre y ruta sean válidos.";
+            }
+            catch (Exception)
+            {
+                return
+                    "No se pudo guardar el reporte. "
+                    + "Verifique los datos e inténtelo nuevamente.";
             }
         }
 
-        public List<ClsModeloReporteador> GetAll()
+        // ============================================================
+        // OBTENER TODOS
+        // ============================================================
+
+        public IEnumerable<ClsReporteador>
+            ReporteadorMetObtenerTodos(int IdAplicacion)
         {
-            var datos =
-                RepositorioReporteador.GetAll();
-
-            ListaReportes =
-                new List<ClsModeloReporteador>();
-
-            foreach (ClsReporteador item in datos)
-            {
-                ListaReportes.Add(
-                    new ClsModeloReporteador
-                    {
-                        NumeroReporte =
-                            item.NumeroReporte,
-
-                        NombreReporte =
-                            item.NombreReporte,
-
-                        RutaReporte =
-                            item.RutaReporte,
-
-                        FechaReporte =
-                            item.FechaReporte
-                    }
-                );
-            }
-
-            return ListaReportes;
+            return
+                _Repositorio
+                .ReporteadorMetObtenerTodos(
+                    IdAplicacion);
         }
 
-        public IEnumerable<ClsModeloReporteador>
-            BuscarPorNombre(string filtro)
+        // ============================================================
+        // BUSCAR POR NOMBRE
+        // ============================================================
+
+        public IEnumerable<ClsReporteador>
+            ReporteadorMetBuscarPorNombre(
+                string Filtro)
         {
-            var datos =
-                RepositorioReporteador
-                .BuscarPorNombre(filtro);
-
-            ListaReportes =
-                new List<ClsModeloReporteador>();
-
-            foreach (ClsReporteador item in datos)
-            {
-                ListaReportes.Add(
-                    new ClsModeloReporteador
-                    {
-                        NumeroReporte =
-                            item.NumeroReporte,
-
-                        NombreReporte =
-                            item.NombreReporte,
-
-                        RutaReporte =
-                            item.RutaReporte,
-
-                        FechaReporte =
-                            item.FechaReporte
-                    }
-                );
-            }
-
-            return ListaReportes;
+            return
+                _Repositorio
+                .ReporteadorMetBuscarPorNombre(
+                    Filtro);
         }
 
+        // ============================================================
+        // BUSCAR POR FECHA
+        // ============================================================
 
-        public IEnumerable<ClsModeloReporteador>
-            BuscarPorFecha(DateTime fecha)
+        public IEnumerable<ClsReporteador>
+            ReporteadorMetBuscarPorFecha(
+                DateTime Fecha)
         {
-            var datos =
-                RepositorioReporteador
-                .BuscarPorFecha(fecha);
+            return
+                _Repositorio
+                .ReporteadorMetBuscarPorFecha(
+                    Fecha);
+        }
 
-            ListaReportes =
-                new List<ClsModeloReporteador>();
+        // ============================================================
+        // ELIMINAR
+        // ============================================================
 
-            foreach (ClsReporteador item in datos)
-            {
-                ListaReportes.Add(
-                    new ClsModeloReporteador
-                    {
-                        NumeroReporte =
-                            item.NumeroReporte,
-
-                        NombreReporte =
-                            item.NombreReporte,
-
-                        RutaReporte =
-                            item.RutaReporte,
-
-                        FechaReporte =
-                            item.FechaReporte
-                    }
-                );
-            }
-
-            return ListaReportes;
+        public void ReporteadorMetEliminarReporte(
+            ClsReporteador Reporte)
+        {
+            _Repositorio
+                .ReporteadorMetRemover(
+                    Reporte);
         }
     }
 }

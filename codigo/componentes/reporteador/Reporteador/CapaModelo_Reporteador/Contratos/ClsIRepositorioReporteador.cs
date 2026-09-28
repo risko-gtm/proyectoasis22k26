@@ -6,14 +6,28 @@ namespace CapaModelo_Reporteador.Contratos
 {
     public interface ClsIRepositorioReporteador
     {
-        void Agregar(ClsReporteador reporte);
-        void Editar(ClsReporteador reporte);
-        void Remover(ClsReporteador reporte);
-        IEnumerable<ClsReporteador> GetAll();
-        IEnumerable<ClsReporteador> BuscarPorNombre(string filtro);
-        IEnumerable<ClsReporteador> BuscarPorFecha(DateTime fecha);
+        void ReporteadorMetAgregar(
+            ClsReporteador Reporte,
+            int IdAplicacion);
 
-        // OBTENER MÁXIMO NÚMERO
-        int ObtenerMaximoNumeroReporte(int codigoModulo);
+        void ReporteadorMetEditar(
+            ClsReporteador Reporte);
+
+        void ReporteadorMetRemover(
+            ClsReporteador Reporte);
+
+        IEnumerable<ClsReporteador>
+            ReporteadorMetObtenerTodos(int IdAplicacion);
+
+        IEnumerable<ClsReporteador>
+            ReporteadorMetBuscarPorNombre(
+                string Filtro);
+
+        IEnumerable<ClsReporteador>
+            ReporteadorMetBuscarPorFecha(
+                DateTime Fecha);
+
+        int ReporteadorMetObtenerMaximoNumeroReporte(
+            int CodigoModulo);
     }
 }
