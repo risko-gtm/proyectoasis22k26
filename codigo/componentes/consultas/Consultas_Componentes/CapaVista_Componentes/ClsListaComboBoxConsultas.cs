@@ -1,8 +1,10 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace CapaVista_Consultas.Componentes
+namespace CapaVista_Componentes
 {
+
+    // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
     public class ClsListaComboBoxConsultas : ComboBox
     {
         private static readonly Color _ColorTexto =
@@ -31,4 +33,6 @@ namespace CapaVista_Consultas.Componentes
         protected override Size DefaultSize =>
             new Size(200, 27);
     }
+
+    // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
 }

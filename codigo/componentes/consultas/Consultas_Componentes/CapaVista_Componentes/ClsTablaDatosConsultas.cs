@@ -1,8 +1,10 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace CapaVista_Consultas.Componentes
+namespace CapaVista_Componentes
 {
+
+    // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
     public class ClsTablaDatosConsultas : DataGridView
     {
         private static readonly Color _Primario =
@@ -23,14 +25,12 @@ namespace CapaVista_Consultas.Componentes
         public ClsTablaDatosConsultas()
         {
             DoubleBuffered = true;
-
             ConsultasMetAplicarEstandarizacion();
         }
 
         protected override void OnResize(System.EventArgs e)
         {
             base.OnResize(e);
-
             ConsultasMetAjustarAlturaFilas();
         }
 
@@ -38,7 +38,6 @@ namespace CapaVista_Consultas.Componentes
             DataGridViewRowsAddedEventArgs e)
         {
             base.OnRowsAdded(e);
-
             ConsultasMetAjustarAlturaFilas();
         }
 
@@ -46,7 +45,6 @@ namespace CapaVista_Consultas.Componentes
             DataGridViewRowsRemovedEventArgs e)
         {
             base.OnRowsRemoved(e);
-
             ConsultasMetAjustarAlturaFilas();
         }
 
@@ -54,14 +52,12 @@ namespace CapaVista_Consultas.Componentes
             DataGridViewBindingCompleteEventArgs e)
         {
             base.OnDataBindingComplete(e);
-
             ConsultasMetAjustarAlturaFilas();
         }
 
         protected override void OnHandleCreated(System.EventArgs e)
         {
             base.OnHandleCreated(e);
-
             ConsultasMetAplicarEstandarizacion();
         }
 
@@ -148,21 +144,17 @@ namespace CapaVista_Consultas.Componentes
             AllowUserToDeleteRows = false;
             AllowUserToResizeRows = false;
 
-            SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             MultiSelect = false;
 
-            EditMode =
-                DataGridViewEditMode.EditProgrammatically;
+            EditMode = DataGridViewEditMode.EditProgrammatically;
 
-            AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
+            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ColumnHeadersHeight = 32;
 
-            ColumnHeadersHeightSizeMode =
-                DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             RowTemplate.Height = 28;
 
@@ -176,16 +168,11 @@ namespace CapaVista_Consultas.Componentes
 
             int CantidadFilas = Rows.Count;
 
-            int EspacioDisponible =
-                ClientSize.Height
-                - ColumnHeadersHeight
-                - 2;
+            int EspacioDisponible = ClientSize.Height - ColumnHeadersHeight - 2;
 
-            if (EspacioDisponible <= 0)
-                return;
+            if (EspacioDisponible <= 0) return;
 
-            int AlturaCalculada =
-                EspacioDisponible / CantidadFilas;
+            int AlturaCalculada = EspacioDisponible / CantidadFilas;
 
             if (AlturaCalculada <= _AlturaMinimaFila)
             {
@@ -207,15 +194,11 @@ namespace CapaVista_Consultas.Componentes
                 return;
             }
 
-            int Sobrante =
-                EspacioDisponible
-                - (AlturaCalculada * CantidadFilas);
+            int Sobrante = EspacioDisponible - (AlturaCalculada * CantidadFilas);
 
             for (int i = 0; i < CantidadFilas; i++)
             {
-                int AlturaFila =
-                    AlturaCalculada +
-                    (i < Sobrante ? 1 : 0);
+                int AlturaFila = AlturaCalculada + (i < Sobrante ? 1 : 0);
 
                 if (AlturaFila > _AlturaMaximaFila)
                     AlturaFila = _AlturaMaximaFila;
@@ -245,35 +228,12 @@ namespace CapaVista_Consultas.Componentes
             {
                 int Ancho = ClientSize.Width - 1;
                 int Alto = ClientSize.Height - 1;
-
-                e.Graphics.DrawLine(
-                    Borde,
-                    0,
-                    0,
-                    Ancho,
-                    0);
-
-                e.Graphics.DrawLine(
-                    Borde,
-                    0,
-                    0,
-                    0,
-                    Alto);
-
-                e.Graphics.DrawLine(
-                    Borde,
-                    Ancho,
-                    0,
-                    Ancho,
-                    Alto);
-
-                e.Graphics.DrawLine(
-                    Borde,
-                    0,
-                    Alto,
-                    Ancho,
-                    Alto);
+                e.Graphics.DrawLine(Borde,0,0,Ancho,0);
+                e.Graphics.DrawLine(Borde,0,0,0,Alto);
+                e.Graphics.DrawLine(Borde,Ancho,0,Ancho,Alto);
+                e.Graphics.DrawLine(Borde,0,Alto,Ancho,Alto);
             }
         }
     }
+    // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "15/09/26"
 }

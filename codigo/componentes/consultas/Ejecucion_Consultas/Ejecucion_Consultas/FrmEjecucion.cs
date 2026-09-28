@@ -1,34 +1,31 @@
 ﻿using CapaVista_Consultas;
-using CapaVista_Consultas.Componentes;
+using CapaVista_Componentes;
+
 using System;
 
 namespace Ejecucion_Consultas
 {
-    public partial class FrmEjecucion :
-        ClsBaseTerminus
+    // Inicio del código de Diego Fernando Santizo Samayoa 0901-22-15950 el 21/09/2026
+    public partial class FrmEjecucion : ClsBaseTerminus
     {
         public FrmEjecucion()
         {
             InitializeComponent();
         }
 
-        private void ConsultasMetBtnConsultarClick(
-            object sender,
-            EventArgs e)
+        private void ConsultasMetBtnConsultarClick(object Sender, EventArgs Evento)
         {
-            using (FrmConsultasSimples FormularioConsultasSimples =
-                new FrmConsultasSimples(
-                    "tblConsulta",
-                    "Pk_Consulta"))
+            using (FrmConsultasSimples Formulario = new FrmConsultasSimples("tblConsulta", "Pk_Consulta"))
             {
-                FormularioConsultasSimples.ShowDialog();
+                Formulario.ShowDialog();
 
-                if (FormularioConsultasSimples.SeleccionRealizada)
+                if (Formulario.SeleccionRealizada)
                 {
-                    ConsultasTxtId.Text =
-                        FormularioConsultasSimples.IdSeleccionado;
+                    ConsultasTxtId.Text = Formulario.CampoSeleccionado;
                 }
             }
         }
+        // Fin del código de Diego Fernando Santizo Samayoa 0901-22-15950 el 21/09/2026
+
     }
 }

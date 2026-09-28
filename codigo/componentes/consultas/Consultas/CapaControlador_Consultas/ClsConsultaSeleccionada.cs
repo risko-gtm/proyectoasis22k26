@@ -1,4 +1,5 @@
 ﻿using CapaModelo_Consultas;
+using System;
 using System.Data;
 
 namespace CapaControlador_Consultas
@@ -14,15 +15,9 @@ namespace CapaControlador_Consultas
             return _SentenciasTablas.ConsultasFuncObtenerConsultas();
         }
 
-        public DataTable ConsultasFuncCargarConsulta(
-            string Consulta,
-            int Pagina,
-            int RegistrosPorPagina)
+        public DataTable ConsultasFuncCargarConsulta(string Consulta, int Pagina, int RegistrosPorPagina)
         {
-            return _SentenciasTablas.ConsultasFuncCargarConsulta(
-                Consulta,
-                Pagina,
-                RegistrosPorPagina);
+            return _SentenciasTablas.ConsultasFuncCargarConsulta(Consulta, Pagina,RegistrosPorPagina);
         }
 
         public int ConsultasFuncContarResultadosQuery(string Consulta)
@@ -30,6 +25,29 @@ namespace CapaControlador_Consultas
             return _SentenciasTablas.ConsultasFuncContarResultadosQuery(Consulta);
         }
 
-        //Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
+        // Fin del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
+
+        // Inicio de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "19/09/26"
+
+        public DataTable ConsultasFuncCargarConsultasPorTabla(string NombreTabla)
+        {
+            if (string.IsNullOrWhiteSpace(NombreTabla))
+            {
+                throw new ArgumentException("El nombre de la tabla no puede estar vacío.");
+            }
+            return _SentenciasTablas.ConsultasFuncCargarConsultasPorTabla(NombreTabla);
+        }
+
+        public void ConsultasProcEliminarConsulta(int IdConsulta)
+        {
+            if (IdConsulta <= 0)
+            {
+                throw new ArgumentException("El identificador de la consulta no es válido.");
+            }
+
+            _SentenciasTablas.ConsultasProcEliminarConsulta(IdConsulta);
+        }
+
+        // Fin de código de "Diego Fernando Santizo Samayoa" - carné: "0901-22-15950" - Fecha: "19/09/26"
     }
 }

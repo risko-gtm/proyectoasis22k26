@@ -4,24 +4,19 @@ using System.Data;
 using System.Windows.Forms;
 using CapaControlador_Consultas;
 
+
+//Inicio del código de Carlos Andres Arriaza Lara 0901-23-13862 el 16/09/2026
 namespace CapaVista_Consultas.Controles
 {
-    public partial class ClsTabla : Componentes.ClsControlUsuarioConsultas
+    public partial class UsrTabla : CapaVista_Componentes.ClsControlUsuarioConsultas
     {
-
-        private string _CampoId;
-
-        public string IdSeleccionado { get; private set; }
-
+        private string _Campo;
+        public string CampoSeleccionado { get; private set; }
         public string TablaSeleccionada { get; private set; }
-
         public bool SeleccionRealizada { get; private set; }
 
-        private readonly ClsTablas _Tablas =
-            new ClsTablas();
-
-        private readonly ClsConsultaSeleccionada _ConsultaSeleccionada =
-            new ClsConsultaSeleccionada();
+        private readonly ClsTablas _Tablas =new ClsTablas();
+        private readonly ClsConsultaSeleccionada _ConsultaSeleccionada = new ClsConsultaSeleccionada();
 
         private int _PaginaActual = 1;
         private string _QuerySeleccionada = "";
@@ -37,7 +32,7 @@ namespace CapaVista_Consultas.Controles
 
         public event EventHandler
              ConsultasEvtFilaSeleccionada;
-        public ClsTabla()
+        public UsrTabla()
         {
             InitializeComponent();
 
@@ -47,7 +42,7 @@ namespace CapaVista_Consultas.Controles
                 ConsultasDgvSimples.AutoGenerateColumns = true;
             }
         }
-        public ClsTabla(string Tabla) : this()
+        public UsrTabla(string Tabla) : this()
         {
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
@@ -57,19 +52,19 @@ namespace CapaVista_Consultas.Controles
         }
         public bool ConsultasFuncSeleccionarRegistro()
         {
-            if (string.IsNullOrWhiteSpace(_CampoId))
+            if (string.IsNullOrWhiteSpace(_Campo))
             {
                 return false;
             }
 
-            string ValorSeleccionado = ConsultasFuncObtenerValorSeleccionado(_CampoId);
+            string ValorSeleccionado = ConsultasFuncObtenerValorSeleccionado(_Campo);
 
             if (string.IsNullOrWhiteSpace(ValorSeleccionado))
             {
                 return false;
             }
 
-            IdSeleccionado = ValorSeleccionado;
+            CampoSeleccionado = ValorSeleccionado;
 
             TablaSeleccionada = _TablaSeleccionada;
 
@@ -80,9 +75,9 @@ namespace CapaVista_Consultas.Controles
         public void ConsultasMetConfigurarSeleccion(
             string CampoId)
         {
-            _CampoId = CampoId;
+            _Campo = CampoId;
 
-            IdSeleccionado = null;
+            CampoSeleccionado = null;
             TablaSeleccionada = null;
             SeleccionRealizada = false;
         }
@@ -155,23 +150,18 @@ namespace CapaVista_Consultas.Controles
             }
             catch (ArgumentException Excepcion)
             {
-                ConsultasMetMostrarAdvertencia(
-                    Excepcion.Message);
+                ConsultasMetMostrarAdvertencia(Excepcion.Message);
             }
             catch (InvalidOperationException Excepcion)
             {
-                ConsultasMetMostrarError(
-                    Excepcion.Message);
+                ConsultasMetMostrarError(Excepcion.Message);
             }
             catch (Exception Excepcion)
             {
-                ConsultasMetMostrarError(
-                    "Ocurrió un error inesperado al cargar " + "los registros.\n\n" + Excepcion.Message);
+                ConsultasMetMostrarError("Ocurrió un error inesperado al cargar " + "los registros.\n\n" + Excepcion.Message);
             }
         }
-        public void ConsultasProcCargarConsultaDesdeQuery(
-            string Consulta,
-            string Tabla)
+        public void ConsultasProcCargarConsultaDesdeQuery(string Consulta, string Tabla)
         {
             try
             {
@@ -249,9 +239,7 @@ namespace CapaVista_Consultas.Controles
 
         }
 
-        public void ConsultasProcMostrarResultado(
-            DataTable Datos,
-            int TotalRegistros)
+        public void ConsultasProcMostrarResultado(DataTable Datos, int TotalRegistros)
         {
             _PaginaActual = 1;
             _InicioRangoPagina = 1;
@@ -272,8 +260,7 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcCambiarLblResultado();
         }
 
-        public void ConsultasProcMostrarResultado(
-            DataTable Datos)
+        public void ConsultasProcMostrarResultado(DataTable Datos)
         {
             ConsultasProcMostrarResultado(
                 Datos,
@@ -319,9 +306,9 @@ namespace CapaVista_Consultas.Controles
                 NumeroPagina <= FinRango;
                 NumeroPagina++)
             {
-                Componentes.ClsBotonPaginacionConsultas
+                CapaVista_Componentes.ClsBotonPaginacionConsultas
                     BotonPagina =
-                        new Componentes.ClsBotonPaginacionConsultas();
+                        new CapaVista_Componentes.ClsBotonPaginacionConsultas();
 
                 BotonPagina.Name =
                     $"ConsultasBtnPagina{NumeroPagina}";
@@ -347,13 +334,11 @@ namespace CapaVista_Consultas.Controles
         }
 
 
-        private void ConsultasMetBtnPaginaClick(
-            object Sender,
-            EventArgs Evento)
+        private void ConsultasMetBtnPaginaClick(object Sender,EventArgs Evento)
         {
-            Componentes.ClsBotonPaginacionConsultas
+            CapaVista_Componentes.ClsBotonPaginacionConsultas
                 BotonPagina =
-                    (Componentes
+                    (CapaVista_Componentes
                         .ClsBotonPaginacionConsultas)Sender;
 
             _PaginaActual =
@@ -363,9 +348,7 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcRecargarPaginaActual();
         }
 
-        private void ConsultasMetBtnAnteriorClick(
-            object Sender,
-            EventArgs Evento)
+        private void ConsultasMetBtnAnteriorClick(object Sender,EventArgs Evento)
         {
             if (_PaginaActual <= 1)
             {
@@ -383,9 +366,7 @@ namespace CapaVista_Consultas.Controles
             ConsultasProcRecargarPaginaActual();
         }
 
-        private void ConsultasMetBtnSiguienteClick(
-            object Sender,
-            EventArgs Evento)
+        private void ConsultasMetBtnSiguienteClick(object Sender,EventArgs Evento)
         {
             if (_PaginaActual >=
                 _TotalPaginas)
@@ -560,7 +541,7 @@ namespace CapaVista_Consultas.Controles
 
             string ValorSeleccionado =
                 ConsultasFuncObtenerValorSeleccionado(
-                    _CampoId);
+                    _Campo);
 
             if (string.IsNullOrWhiteSpace(
                 ValorSeleccionado))
@@ -570,7 +551,7 @@ namespace CapaVista_Consultas.Controles
 
             DialogResult Respuesta =
                 MessageBox.Show(
-                    "¿Desea seleccionar el registro con ID " +
+                    "¿Desea seleccionar el registro con " + _Campo + ": " +
                     ValorSeleccionado +
                     "?",
                     "Seleccionar registro",

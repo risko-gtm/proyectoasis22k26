@@ -77,10 +77,19 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsrTextbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrTextbox.Designer.cs">
+      <DependentUpon>UsrTextbox.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ClsControlUsuarioConsultas.resx">
       <DependentUpon>ClsControlUsuarioConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrTextbox.resx">
+      <DependentUpon>UsrTextbox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -61,6 +61,77 @@ namespace CapaModelo_Consultas
             return Campos;
         }
 
+        //Inicio del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
+        public Type ConsultasFuncObtenerTipoCampo(string NombreTabla, string NombreCampo)
+        {
+            ConsultasMetValidarIdentificador(NombreTabla, "tabla");
+            ConsultasMetValidarIdentificador(NombreCampo, "columna");
+
+            string Consulta =
+                "SELECT DATA_TYPE " +
+                "FROM INFORMATION_SCHEMA.COLUMNS " +
+                "WHERE TABLE_SCHEMA = DATABASE() " +
+                "AND TABLE_NAME = ? " +
+                "AND COLUMN_NAME = ?;";
+
+            using (OdbcConnection Conexion = _Conexion.ConsultasFuncConexion())
+            {
+                using (OdbcCommand Comando = new OdbcCommand(Consulta, Conexion))
+                {
+                    Comando.Parameters.AddWithValue("?", NombreTabla);
+                    Comando.Parameters.AddWithValue("?", NombreCampo);
+
+                    object Resultado = Comando.ExecuteScalar();
+
+                    if (Resultado == null || Resultado == DBNull.Value)
+                    {
+                        return null;
+                    }
+
+                    string Tipo = Resultado.ToString().ToLower();
+
+                    switch (Tipo)
+                    {
+                        case "tinyint":
+                        case "smallint":
+                        case "mediumint":
+                        case "int":
+                        case "integer":
+                        case "bigint":
+                        case "decimal":
+                        case "numeric":
+                        case "float":
+                        case "double":
+                            return typeof(decimal);
+                        
+                        case "date":
+                        case "datetime":
+                        case "timestamp":
+                            return typeof(DateTime);
+
+                        case "bit":
+                        case "boolean":
+                        case "bool":
+                            return typeof(bool);
+
+                        case "char":
+                        case "varchar":
+                        case "text":
+                        case "tinytext":
+                        case "mediumtext":
+                        case "longtext":
+                        
+                            return typeof(string);
+
+                        default:
+                            return typeof(string);
+                    }
+                }
+            }
+        }
+
+        //Fin del código de Miguel David Contreras Jacinto 0901-21-3878 el 21/09/2026
+
         /// <summary>
         /// Trae una página de registros de la tabla aplicando un filtro opcional.
         /// Si Campo u Operador vienen vacíos, devuelve la tabla sin filtrar.
@@ -246,7 +317,7 @@ namespace CapaModelo_Consultas
                     return OperadorVisible;
             }
         }
-
+      
         public string ConsultasFuncPrepararValor(
            string OperadorVisible,
            string Valor)

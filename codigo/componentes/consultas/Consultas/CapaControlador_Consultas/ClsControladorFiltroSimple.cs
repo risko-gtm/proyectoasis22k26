@@ -1,6 +1,7 @@
+using CapaModelo_Consultas;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using CapaModelo_Consultas;
 
 namespace CapaControlador_Consultas
 {
@@ -136,6 +137,18 @@ namespace CapaControlador_Consultas
                     return OperadorVisible;
             }
         }
+
+        //Inicio del código de Migurl David Contreras Jacinto 0901-21-3878 el 21/09/2026
+        public Type ConsultasFuncObtenerTipoCampo(
+        string NombreTabla,
+        string NombreCampo)
+        {
+            return _Sentencias.ConsultasFuncObtenerTipoCampo(
+                NombreTabla,
+                NombreCampo);
+        }
+
+        //Fin del código de Migurl David Contreras Jacinto 0901-21-3878 el 21/09/2026
 
         private string ConsultasFuncPrepararValor(
             string OperadorVisible,

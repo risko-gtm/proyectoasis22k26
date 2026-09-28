@@ -1,6 +1,6 @@
 ﻿namespace CapaVista_Consultas.Controles
 {
-    partial class ClsTabla
+    partial class UsrTabla
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClsTabla));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrTabla));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ConsultasTlpPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasTlpPaginacion = new System.Windows.Forms.TableLayoutPanel();
             this.ConsultasFlpPaginas = new System.Windows.Forms.FlowLayoutPanel();
-            this.ConsultasBtnSiguiente = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasBtnAnterior = new CapaVista_Consultas.Componentes.ClsBotonConsultas();
-            this.ConsultasDgvSimples = new CapaVista_Consultas.Componentes.ClsTablaDatosConsultas();
-            this.ConsultasLblPaginacion = new CapaVista_Consultas.Componentes.ClsEtiquetaConsultas();
+            this.ConsultasBtnSiguiente = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasBtnAnterior = new CapaVista_Componentes.ClsBotonConsultas();
+            this.ConsultasDgvSimples = new CapaVista_Componentes.ClsTablaDatosConsultas();
+            this.ConsultasLblPaginacion = new CapaVista_Componentes.ClsEtiquetaConsultas();
             this.ConsultasTlpPrincipal.SuspendLayout();
             this.ConsultasTlpPaginacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultasDgvSimples)).BeginInit();
@@ -134,33 +134,33 @@
             this.ConsultasDgvSimples.AllowUserToAddRows = false;
             this.ConsultasDgvSimples.AllowUserToDeleteRows = false;
             this.ConsultasDgvSimples.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvSimples.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(242)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvSimples.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ConsultasDgvSimples.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ConsultasDgvSimples.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.ConsultasDgvSimples.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConsultasDgvSimples.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.ConsultasDgvSimples.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvSimples.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9.5F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvSimples.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.ConsultasDgvSimples.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ConsultasTlpPrincipal.SetColumnSpan(this.ConsultasDgvSimples, 2);
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ConsultasDgvSimples.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ConsultasDgvSimples.DefaultCellStyle = dataGridViewCellStyle7;
             this.ConsultasDgvSimples.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ConsultasDgvSimples.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ConsultasDgvSimples.EnableHeadersVisualStyles = false;
@@ -173,11 +173,11 @@
             this.ConsultasDgvSimples.ReadOnly = true;
             this.ConsultasDgvSimples.RowHeadersVisible = false;
             this.ConsultasDgvSimples.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.ConsultasDgvSimples.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.ConsultasDgvSimples.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.ConsultasDgvSimples.RowTemplate.Height = 28;
             this.ConsultasDgvSimples.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ConsultasDgvSimples.Size = new System.Drawing.Size(865, 420);
@@ -199,13 +199,13 @@
             this.ConsultasLblPaginacion.Text = "Mostrando x-y de z registros";
             this.ConsultasLblPaginacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // UcTabla
+            // ClsTabla
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.Controls.Add(this.ConsultasTlpPrincipal);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "UcTabla";
+            this.Name = "ClsTabla";
             this.Size = new System.Drawing.Size(871, 480);
             this.ConsultasTlpPrincipal.ResumeLayout(false);
             this.ConsultasTlpPrincipal.PerformLayout();
@@ -220,9 +220,9 @@
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPrincipal;
         private System.Windows.Forms.TableLayoutPanel ConsultasTlpPaginacion;
         private System.Windows.Forms.FlowLayoutPanel ConsultasFlpPaginas;
-        private Componentes.ClsBotonConsultas ConsultasBtnAnterior;
-        private Componentes.ClsBotonConsultas ConsultasBtnSiguiente;
-        private Componentes.ClsTablaDatosConsultas ConsultasDgvSimples;
-        private Componentes.ClsEtiquetaConsultas ConsultasLblPaginacion;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnAnterior;
+        private CapaVista_Componentes.ClsBotonConsultas ConsultasBtnSiguiente;
+        private CapaVista_Componentes.ClsTablaDatosConsultas ConsultasDgvSimples;
+        private CapaVista_Componentes.ClsEtiquetaConsultas ConsultasLblPaginacion;
     }
 }
