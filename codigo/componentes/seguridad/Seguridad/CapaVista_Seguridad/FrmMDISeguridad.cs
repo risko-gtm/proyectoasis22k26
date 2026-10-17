@@ -35,7 +35,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//using CapaVista_Mantenimiento;
 
 namespace CapaVista_Seguridad
 {
@@ -241,16 +241,19 @@ namespace CapaVista_Seguridad
 
         private void SeguridadBtnEmpleados_Click(object sender, EventArgs e)
         {
-         //   if (!ClsSeguridadFormHelper.SeguridadMetTieneAcceso(IdModulo: 4, IdAplicacion: 4))
-         //   {
-          //      MessageBox.Show("No tienes acceso a este módulo.",
-          //          "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           //     return;
-         //   }
+            //   if (!ClsSeguridadFormHelper.SeguridadMetTieneAcceso(IdModulo: 4, IdAplicacion: 4))
+            //   {
+            //      MessageBox.Show("No tienes acceso a este módulo.",
+            //          "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //     return;
+            //   }
+            FrmMantenimientoModulo Modulo = new FrmMantenimientoModulo();
+            Modulo.ShowDialog();
 
-            FrmNavegador Empleados = new FrmNavegador();
-            Empleados.ShowDialog();
+
         }
+
+
 
         private void SeguridadBtnAplicaciones_Click(object sender, EventArgs e)
         {

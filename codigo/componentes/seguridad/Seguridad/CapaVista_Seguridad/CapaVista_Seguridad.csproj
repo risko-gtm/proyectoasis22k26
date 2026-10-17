@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CapaControlador_Seguridad\bin\Debug\CapaControlador_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="CapaVista_Mantenimiento, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\asis22p2k26\codigo\componentes\seguridad\Mantenimiento2k26\CapaVista_Mantenimiento\bin\Debug\CapaVista_Mantenimiento.exe</HintPath>
+    </Reference>
     <Reference Include="CapaVista_Navegador">
       <HintPath>..\..\..\navegador\Navegador\CapaVista_Navegador\bin\Debug\CapaVista_Navegador.dll</HintPath>
     </Reference>
