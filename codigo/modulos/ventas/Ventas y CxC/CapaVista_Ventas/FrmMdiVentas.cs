@@ -1,4 +1,4 @@
-/*
+﻿/*
  * INICIO DEL CÓDIGO — Jose Torres
  * Carné: 0901-23-1091 | Fecha: 15/10/2026
  * Área: Ventas y cuentas por cobrar
@@ -13,8 +13,10 @@ namespace CapaVista_Ventas
 {
     public partial class FrmMdiVentas : Form
     {
+        private readonly int _IdUsuario;
+
         // WM_SETREDRAW agrupa los cambios de tamaño para evitar imágenes superpuestas al contraer el menú.
-        private const int WmSetRedraw = 0x000B;
+        private const int _WmSetRedraw = 0x000B;
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr SendMessage(IntPtr Ventana, int Mensaje, IntPtr Valor, IntPtr Datos);
 
@@ -27,8 +29,13 @@ namespace CapaVista_Ventas
                 ControlStyles.ResizeRedraw, true);
         }
 
-        public FrmMdiVentas(string NombreUsuario, string RolUsuario) : this()
-        { VentasMetActualizarSesion(NombreUsuario, RolUsuario); }
+        public FrmMdiVentas(string NombreUsuario, string RolUsuario) : this(NombreUsuario, RolUsuario, 0) { }
+
+        public FrmMdiVentas(string NombreUsuario, string RolUsuario, int IdUsuario) : this()
+        {
+            _IdUsuario = IdUsuario;
+            VentasMetActualizarSesion(NombreUsuario, RolUsuario);
+        }
 
         // Presenta el usuario y el rol cuando otro módulo proporciona esa información.
         public void VentasMetActualizarSesion(string NombreUsuario, string RolUsuario)
@@ -50,14 +57,14 @@ namespace CapaVista_Ventas
             VentasLblValorKpi6.Text = PedidosPendientes.ToString("N0", Cultura);
         }
 
-        private void VentasBtnBurger_Click(object sender, EventArgs e)
+        private void VentasMetBtnBurgerClick(object Origen, EventArgs Evento)
         {
             // Como en Seguridad: el panel pasa de 270 a 64 px y el contenido cambia de posición.
             // Los botones conservan su ancho, Image y Text; el panel recorta la parte que queda fuera.
             bool Contraer = VentasPnlNavegador.Width == 270;
             SuspendLayout();
             VentasPnlPrincipal.SuspendLayout();
-            SendMessage(Handle, WmSetRedraw, IntPtr.Zero, IntPtr.Zero);
+            SendMessage(Handle, _WmSetRedraw, IntPtr.Zero, IntPtr.Zero);
             try
             {
                 VentasPnlNavegador.Width = Contraer ? 64 : 270;
@@ -69,7 +76,7 @@ namespace CapaVista_Ventas
             {
                 VentasPnlPrincipal.ResumeLayout(true);
                 ResumeLayout(true);
-                SendMessage(Handle, WmSetRedraw, new IntPtr(1), IntPtr.Zero);
+                SendMessage(Handle, _WmSetRedraw, new IntPtr(1), IntPtr.Zero);
                 // Repinta también los controles hijos una sola vez al terminar el cambio.
                 Invalidate(true);
                 Update();
@@ -81,121 +88,96 @@ namespace CapaVista_Ventas
             bool Activo = Boton == VentasBtnInicio;
             // Efecto de difuminado (hover): al pasar el cursor se sustituye el fondo por un tono
             // morado más suave. No altera el icono Image ni el texto Text del botón.
-            Boton.BackgroundImage = Activo ? Properties.Resources.BotonMenuActivoVentas :
-                (Sobre ? Properties.Resources.BotonMenuHoverVentas : Properties.Resources.BotonMenuNormalVentas);
+            Boton.BackgroundImage = Activo ? CapaVista_Ventas.Properties.Resources.BotonMenuActivoVentas :
+                (Sobre ? CapaVista_Ventas.Properties.Resources.BotonMenuHoverVentas : CapaVista_Ventas.Properties.Resources.BotonMenuNormalVentas);
             Boton.ForeColor = Activo ? Color.FromArgb(59, 29, 74) : Color.FromArgb(248, 245, 249);
         }
 
-        private void VentasBtnOpcion_MouseEnter(object sender, EventArgs e)
-        { VentasMetAplicarEstadoBoton((Button)sender, true); }
+        private void VentasMetBtnOpcionMouseEnter(object Origen, EventArgs Evento)
+        { VentasMetAplicarEstadoBoton((Button)Origen, true); }
 
-        private void VentasBtnOpcion_MouseLeave(object sender, EventArgs e)
-        { VentasMetAplicarEstadoBoton((Button)sender, false); }
+        private void VentasMetBtnOpcionMouseLeave(object Origen, EventArgs Evento)
+        { VentasMetAplicarEstadoBoton((Button)Origen, false); }
 
         // Inicio conserva la pantalla principal del módulo.
-        private void VentasBtnInicio_Click(object sender, EventArgs e)
+        private void VentasMetBtnInicioClick(object Origen, EventArgs Evento)
         {
             // Aquí se puede agregar la acción específica del botón Inicio.
         }
 
         // Abre el listado de precios de escritorio sobre el MDI.
-        private void VentasBtnListadoPrecios_Click(object sender, EventArgs e)
+        private void VentasMetBtnListadoPreciosClick(object Origen, EventArgs Evento)
         {
-            using (FrmListadoPrecios Formulario = new FrmListadoPrecios())
-            {
+            using (var Formulario = new CapaVista_ListadoPrecios.FrmListadoPrecios())
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Abre la opción de movimientos de clientes.
-        private void VentasBtnMovimientosClientes_Click(object sender, EventArgs e)
+        private void VentasMetBtnMovimientosClientesClick(object Origen, EventArgs Evento)
         {
-            // Abre la base de trabajo del equipo como ventana modal sobre el MDI.
-            using (FrmMovimientosClientesVentas Formulario = new FrmMovimientosClientesVentas())
-            {
+            using (var Formulario = new CapaVista_MovimientosClientes.FrmMovimientosClientesVentas() { VentasIdUsuario = _IdUsuario })
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Abre la opción de recepción de pagos.
-        private void VentasBtnRecepcionPagos_Click(object sender, EventArgs e)
+        private void VentasMetBtnRecepcionPagosClick(object Origen, EventArgs Evento)
         {
-            // Abre la base de trabajo del equipo como ventana modal sobre el MDI.
-            using (FrmRecepcionPagosVentas Formulario = new FrmRecepcionPagosVentas())
+            using (var Formulario = new CapaVista_MovimientosClientes.FrmMovimientosClientesVentas() { VentasIdUsuario = _IdUsuario })
             {
+                Formulario.VentasMetMostrarRecepcionPagos();
                 Formulario.ShowDialog(this);
             }
         }
 
         // Abre la opción de reportes de Ventas.
-        private void VentasBtnReportes_Click(object sender, EventArgs e)
+        private void VentasMetBtnReportesClick(object Origen, EventArgs Evento)
         {
-            // Abre la base de trabajo del equipo como ventana modal sobre el MDI.
-            using (FrmReportesVentas Formulario = new FrmReportesVentas())
-            {
-                Formulario.ShowDialog(this);
-            }
+            CapaVista_Reportes.ClsDocumentoAntiguedad.VentasMetAbrir(this);
         }
 
         // Abre el formulario independiente de cotizaciones.
-        private void VentasBtnCotizaciones_Click(object sender, EventArgs e)
+        private void VentasMetBtnCotizacionesClick(object Origen, EventArgs Evento)
         {
-            using (FrmCotizacionVentas Formulario = new FrmCotizacionVentas())
-            {
+            using (var Formulario = new CapaVista_Cotizaciones.FrmCotizacionVentas() { VentasIdUsuario = _IdUsuario })
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Abre el formulario independiente de pedidos.
-        private void VentasBtnPedidos_Click(object sender, EventArgs e)
+        private void VentasMetBtnPedidosClick(object Origen, EventArgs Evento)
         {
-            using (FrmPedidoVentas Formulario = new FrmPedidoVentas())
-            {
+            using (var Formulario = new CapaVista_Pedidos.FrmPedidoVentas())
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Abre el formulario independiente de facturas.
-        private void VentasBtnFacturas_Click(object sender, EventArgs e)
+        private void VentasMetBtnFacturasClick(object Origen, EventArgs Evento)
         {
-            using (FrmFacturas Formulario = new FrmFacturas())
-            {
-                Formulario.ShowDialog(this);
-            }
+            new CapaVista_Facturas.FrmFacturas().Show(this);
         }
 
         // Abre la opción de comisiones de vendedores.
-        private void VentasBtnComisionesVendedores_Click(object sender, EventArgs e)
+        private void VentasMetBtnComisionesVendedoresClick(object Origen, EventArgs Evento)
         {
-            // Abre la base de trabajo del equipo como ventana modal sobre el MDI.
-            using (FrmComisionesVendedoresVentas Formulario = new FrmComisionesVendedoresVentas())
-            {
+            using (var Formulario = new CapaVista_ComisionVendedores.FrmComisionesVendedoresVentas())
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Abre la opción de mantenimientos del módulo.
-        private void VentasBtnMantenimientos_Click(object sender, EventArgs e)
+        private void VentasMetBtnMantenimientosClick(object Origen, EventArgs Evento)
         {
-            // Abre la base de trabajo del equipo como ventana modal sobre el MDI.
-            using (FrmMantenimientosVentas Formulario = new FrmMantenimientosVentas())
-            {
+            using (var Formulario = new CapaVista_Mantenimientos.FrmMantenimientosVentas())
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Abre la opción de cierre de movimientos.
-        private void VentasBtnCierreMovimientos_Click(object sender, EventArgs e)
+        private void VentasMetBtnCierreMovimientosClick(object Origen, EventArgs Evento)
         {
-            // Abre la base de trabajo del equipo como ventana modal sobre el MDI.
-            using (FrmCierreMovimientosVentas Formulario = new FrmCierreMovimientosVentas())
-            {
+            using (var Formulario = new CapaVista_CierreMovimientos.FrmCierreMovimientosVentas() { VentasIdUsuario = _IdUsuario })
                 Formulario.ShowDialog(this);
-            }
         }
 
         // Confirma la salida del módulo y cierra su ventana principal.
-        private void VentasBtnSalir_Click(object sender, EventArgs e)
+        private void VentasMetBtnSalirClick(object Origen, EventArgs Evento)
         {
             if (MessageBox.Show(this, "¿Desea salir del módulo de Ventas?", "Salir de Ventas",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -204,7 +186,7 @@ namespace CapaVista_Ventas
             }
         }
 
-        private void VentasBtnAyuda_Click(object sender, EventArgs e)
+        private void VentasMetBtnAyudaClick(object Origen, EventArgs Evento)
         {
             MessageBox.Show(this, "Seleccione una opción del menú lateral. El botón de menú contrae o expande la navegación.\n\n" +
                 "Los indicadores se mostrarán cuando el controlador proporcione información. Para salir utilice Salir.",
