@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37502.11
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -13,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaVista_ActivosFijos_Cont
 	ProjectSection(ProjectDependencies) = postProject
 		{6AB06697-0B5E-4784-B5CE-A274E4804DEB} = {6AB06697-0B5E-4784-B5CE-A274E4804DEB}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias_ActivosFijos_Contabilidad", "PruebasUnitarias_ActivosFijos_Contabilidad\PruebasUnitarias_ActivosFijos_Contabilidad.csproj", "{F62B0660-136A-492B-AB85-7392009C60B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +35,10 @@ Global
 		{BCB0EDFF-C46E-4979-9E2C-66B44081F0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB0EDFF-C46E-4979-9E2C-66B44081F0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB0EDFF-C46E-4979-9E2C-66B44081F0DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62B0660-136A-492B-AB85-7392009C60B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62B0660-136A-492B-AB85-7392009C60B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62B0660-136A-492B-AB85-7392009C60B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62B0660-136A-492B-AB85-7392009C60B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
