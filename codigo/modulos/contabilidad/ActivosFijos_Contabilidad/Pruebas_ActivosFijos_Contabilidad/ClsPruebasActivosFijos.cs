@@ -30,8 +30,7 @@ namespace Pruebas_Contabilidad
             ValidationContext Contexto = new ValidationContext(Modelo);
 
             // Act
-            IEnumerable<ValidationResult> Resultados = Modelo.Validate(Contexto);
-            List<ValidationResult> Errores = Resultados.ToList();
+            List<ValidationResult> Errores = Modelo.Validate(Contexto).ToList();
 
             // Assert
             Assert.AreEqual(0, Errores.Count);
@@ -266,7 +265,7 @@ namespace Pruebas_Contabilidad
         public void BuscarReceptor_SinDllDeLogistica_RetornaNull()
         {
             // Arrange
-            // (No se hace nada, confiamos en que el entorno de prueba no tiene la DLL de Logística compilada o cargada)
+            // (No se hace nada, confiamos en que el entorno de prueba no tiene la DLL de Logística cargada)
 
             // Act
             IReceptorActivoFijoContabilidad Receptor = ClsEnlaceLogisticaContabilidad.ContabilidadFuncBuscarReceptor();

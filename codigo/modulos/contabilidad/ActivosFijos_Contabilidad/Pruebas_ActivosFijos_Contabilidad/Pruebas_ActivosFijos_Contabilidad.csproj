@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -13,17 +13,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CapaControlador_ActivosFijos_Contabilidad\CapaControlador_ActivosFijos_Contabilidad.csproj" />
-    <ProjectReference Include="..\CapaModelo_ActivosFijos_Contabilidad\CapaModelo_ActivosFijos_Contabilidad.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Reference Include="CapaControlador_ActivosFijos_Contabilidad">
+      <HintPath>..\CapaControlador_ActivosFijos_Contabilidad\bin\Debug\CapaControlador_ActivosFijos_Contabilidad.dll</HintPath>
+    </Reference>
     <Reference Include="CapaControlador_Contabilidad">
       <HintPath>..\CapaControlador_ActivosFijos_Contabilidad\bin\Debug\CapaControlador_Contabilidad.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaModelo_ActivosFijos_Contabilidad">
+      <HintPath>..\CapaControlador_ActivosFijos_Contabilidad\bin\Debug\CapaModelo_ActivosFijos_Contabilidad.dll</HintPath>
     </Reference>
     <Reference Include="CapaModelo_Contabilidad">
       <HintPath>..\CapaControlador_ActivosFijos_Contabilidad\bin\Debug\CapaModelo_Contabilidad.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 
   <ItemGroup>
