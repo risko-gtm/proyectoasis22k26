@@ -398,6 +398,7 @@
             this.ComprasDtpRecibido.Name = "ComprasDtpRecibido";
             this.ComprasDtpRecibido.Size = new System.Drawing.Size(232, 29);
             this.ComprasDtpRecibido.TabIndex = 18;
+            this.ComprasDtpRecibido.TamanoFuente = 12F;
             // 
             // ComprasLblEstadoValor
             // 
@@ -491,6 +492,7 @@
             this.ComprasDtpFechaemision.Name = "ComprasDtpFechaemision";
             this.ComprasDtpFechaemision.Size = new System.Drawing.Size(232, 29);
             this.ComprasDtpFechaemision.TabIndex = 16;
+            this.ComprasDtpFechaemision.TamanoFuente = 12F;
             // 
             // ComprasLblFechaDeVencimiento
             // 
