@@ -24,4 +24,5 @@ namespace CapaModelo_AutorizacionOrdenes.Contratos
     {
         int BancosMetObtenerIdEmpresa();
     }
+
 }
