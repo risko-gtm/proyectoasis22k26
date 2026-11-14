@@ -431,7 +431,7 @@ namespace CapaVista_PagosProveedores
             // Vuelve al inicio de la pantalla
             ComprasPnlDesplazamiento.AutoScrollPosition = new System.Drawing.Point(0, 0);
 
-            ComprasMetMostrarInformacion("Operación cancelada. ");
+            ComprasMetMostrarInformacion("Operación cancelada.");
         }
 
         // Mueve la barra de desplazamiento hasta que el control quede visible arriba
@@ -635,31 +635,18 @@ namespace CapaVista_PagosProveedores
             }
         }
 
-        // ==================== REPORTE ====================
+        // REPORTE 
 
         // Arma el DataSet y los parámetros del reporte con el pago seleccionado en la lista.
         // Si lanza una excepción, ComprasUsrEncabezado la muestra en un MessageBox y no abre el visor.
         private void ComprasMetPrepararReporte(object Sender, ComprasReporteEventArgs Evento)
         {
-            // TEMPORAL: muestra el error real de cualquier paso (incluido SetParameters, que ya lee el RDLC)
-            try
-            {
-                ComprasMetPrepararReporteInterno(Evento);
-            }
-            catch (Exception Ex)
-            {
-                string Detalle = "";
-                for (Exception E = Ex; E != null; E = E.InnerException)
-                    Detalle += E.GetType().Name + ": " + E.Message + Environment.NewLine + Environment.NewLine;
-                Detalle += "CARPETA DEL PROGRAMA (copiar aqui la DLL):" + Environment.NewLine + AppDomain.CurrentDomain.BaseDirectory;
-                MessageBox.Show(Detalle, "Error real del RDLC");
-                throw;
-            }
+            ComprasMetPrepararReporteInterno(Evento);
         }
 
         private void ComprasMetPrepararReporteInterno(ComprasReporteEventArgs Evento)
         {
-            // Igual que el detalle de orden: se imprime el registro que se está viendo.
+            // se imprime el registro que se está viendo.
             // Si hay un pago en edición se usa ese; si no, el seleccionado en la lista.
             int IdPago = _IdPagoEditando;
             if (IdPago == 0)
@@ -711,9 +698,6 @@ namespace CapaVista_PagosProveedores
                 new ReportParameter("Totales", Totales),
                 new ReportParameter("Comentario", "Sin observaciones")
             });
-
-            // TEMPORAL: fuerza el procesamiento completo. Borrar esta línea cuando el reporte funcione.
-            Evento.Reporte.Render("PDF");
         }
 
         // EVENTOS DE CONTROLES 
@@ -780,7 +764,7 @@ namespace CapaVista_PagosProveedores
             ComprasMetAutocompletarMonto();
         }
 
-        // ==================== AUXILIARES ====================
+        //  AUXILIARES 
 
         // Deja el rango de fechas en el mes actual
         private void ComprasMetRestablecerRangoFechas()
@@ -909,7 +893,7 @@ namespace CapaVista_PagosProveedores
         }
 
 
-        // Manejadores vacíos: el Designer los referencia, no se pueden borrar sin editar FrmPagosProveedores.Designer.cs
+        // Manejadores vacíos enganchados a mejoras
         private void ComprasCboEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -921,6 +905,11 @@ namespace CapaVista_PagosProveedores
         }
 
         private void ComprasUsrEncabezadoFormulario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComprasDgvPagos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
