@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo_DisponibilidadDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaVista_DisponibilidadDiariaBancos", "CapaVista_DisponibilidadDiariaBancos\CapaVista_DisponibilidadDiariaBancos.csproj", "{C3D4E5F6-A7B8-4C9D-0E1F-2A3B4C5D6E7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo_TipoCambioBancos", "..\Tipo_CambioBancos\CapaModelo_TipoCambioBancos\CapaModelo_TipoCambioBancos.csproj", "{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTestDisponibilidadDiariaBancos", "MSTestDisponibilidadDiariaBancos\MSTestDisponibilidadDiariaBancos.csproj", "{A62F0D34-8C1E-4B75-9D20-6E3A5F7C1B8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{C3D4E5F6-A7B8-4C9D-0E1F-2A3B4C5D6E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3D4E5F6-A7B8-4C9D-0E1F-2A3B4C5D6E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3D4E5F6-A7B8-4C9D-0E1F-2A3B4C5D6E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E5F6A7-B8C9-4D0E-1F2A-3B4C5D6E7F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62F0D34-8C1E-4B75-9D20-6E3A5F7C1B8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62F0D34-8C1E-4B75-9D20-6E3A5F7C1B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62F0D34-8C1E-4B75-9D20-6E3A5F7C1B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62F0D34-8C1E-4B75-9D20-6E3A5F7C1B8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

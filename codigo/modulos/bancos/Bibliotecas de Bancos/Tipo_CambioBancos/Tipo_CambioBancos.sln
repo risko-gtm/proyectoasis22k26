@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo_TipoCambioBancos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaVista_TipoCambioBancos", "CapaVista_TipoCambioBancos\CapaVista_TipoCambioBancos.csproj", "{6789ABCD-EF01-2345-6789-ABCDEF012345}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTestTipoCambioBancos", "MSTestTipoCambioBancos\MSTestTipoCambioBancos.csproj", "{D91C4E72-6A3F-4B80-9E15-2F7D8C0A5B36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6789ABCD-EF01-2345-6789-ABCDEF012345}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6789ABCD-EF01-2345-6789-ABCDEF012345}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6789ABCD-EF01-2345-6789-ABCDEF012345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91C4E72-6A3F-4B80-9E15-2F7D8C0A5B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91C4E72-6A3F-4B80-9E15-2F7D8C0A5B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91C4E72-6A3F-4B80-9E15-2F7D8C0A5B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91C4E72-6A3F-4B80-9E15-2F7D8C0A5B36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

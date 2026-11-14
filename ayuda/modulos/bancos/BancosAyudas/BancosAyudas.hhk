@@ -62,6 +62,10 @@
 		<param name="Local" value="MovimientoBancario_Bancos.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Disponibilidad diaria">
+		<param name="Local" value="DisponibilidadDiaria_Bancos.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Navegador de botones (Ingresar, Consultar, Modificar, Eliminar)">
 		<param name="Local" value="Navegador_Ayuda.html">
 		</OBJECT>
@@ -104,6 +108,10 @@
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Tipo de transacción">
 		<param name="Local" value="TipoTransaccion_Bancos.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tipo de cambio">
+		<param name="Local" value="TipoCambio_Bancos.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Validar cierre">
