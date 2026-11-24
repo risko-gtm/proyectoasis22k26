@@ -22,6 +22,7 @@ using CapaVista_CierreInventario_Logistica.Formularios;
 using CapaVista_Enlace_Logistica.Formas;
 using CapaVista_TransporteInterno_Logistica.Formularios;
 using CapaVista_TransporteExterno_Logistica.Formularios;
+using CapaVista_ExamenF.Formularios;
 
 namespace CapaVista_Logistica.Formularios
 {
@@ -813,6 +814,11 @@ namespace CapaVista_Logistica.Formularios
 
             // El panel principal ocupa el espacio disponible
             LogisticaPnlMDI.Dock = DockStyle.Fill;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LogisticaMetAbrirFormulario(new FrmReporteDirectores());
         }
     }
 }

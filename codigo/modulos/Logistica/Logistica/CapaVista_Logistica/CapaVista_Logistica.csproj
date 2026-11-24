@@ -41,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Enlace_OtrosModulos_Logistica\CapaVista_Enlace_Logistica\bin\Debug\CapaVista_Enlace_Logistica.dll</HintPath>
     </Reference>
+    <Reference Include="CapaVista_ExamenF">
+      <HintPath>..\..\..\Examen\ExamenF\CapaVista_ExamenF\bin\Debug\CapaVista_ExamenF.dll</HintPath>
+    </Reference>
     <Reference Include="CapaVista_Inventario_Logistica">
       <HintPath>..\..\Inventario_Logistica\CapaVista_Inventario_Logistica\bin\Debug\CapaVista_Inventario_Logistica.dll</HintPath>
     </Reference>
