@@ -41,14 +41,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Enlace_OtrosModulos_Logistica\CapaVista_Enlace_Logistica\bin\Debug\CapaVista_Enlace_Logistica.dll</HintPath>
     </Reference>
-    <Reference Include="CapaVista_ExamenF">
-      <HintPath>..\..\..\Examen\ExamenF\CapaVista_ExamenF\bin\Debug\CapaVista_ExamenF.dll</HintPath>
-    </Reference>
     <Reference Include="CapaVista_Inventario_Logistica">
       <HintPath>..\..\Inventario_Logistica\CapaVista_Inventario_Logistica\bin\Debug\CapaVista_Inventario_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="CapaVista_MuestreoAuditoria_Logistica">
       <HintPath>..\..\MuestreoAuditoria_Logistica\CapaVista_MuestreoAuditoria_Logistica\bin\Debug\CapaVista_MuestreoAuditoria_Logistica.dll</HintPath>
+    </Reference>
+    <Reference Include="CapaVista_Proveedor_Logistica">
+      <HintPath>..\..\Proveedor_Logistica\CapaVista_Proveedor_Logistica\bin\Debug\CapaVista_Proveedor_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="CapaVista_TransporteExterno_Logistica, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProveedor));
-            this.navegador1 = new CapaVista_Navegador.Navegador();
+            this.LogisticaNavProveedores = new CapaVista_Navegador.Navegador();
             this.LogisticaLblProveedor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // navegador1
+            // LogisticaNavProveedores
             // 
-            this.navegador1.Location = new System.Drawing.Point(13, 76);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(1078, 90);
-            this.navegador1.TabIndex = 0;
+            this.LogisticaNavProveedores.Location = new System.Drawing.Point(13, 76);
+            this.LogisticaNavProveedores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LogisticaNavProveedores.Name = "LogisticaNavProveedores";
+            this.LogisticaNavProveedores.Size = new System.Drawing.Size(1078, 90);
+            this.LogisticaNavProveedores.TabIndex = 0;
+            this.LogisticaNavProveedores.Load += new System.EventHandler(this.LogisticaNavProveedores_Load);
             // 
             // LogisticaLblProveedor
             // 
@@ -57,7 +58,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1094, 450);
             this.Controls.Add(this.LogisticaLblProveedor);
-            this.Controls.Add(this.navegador1);
+            this.Controls.Add(this.LogisticaNavProveedores);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -69,7 +70,7 @@
 
         #endregion
 
-        private CapaVista_Navegador.Navegador navegador1;
+        private CapaVista_Navegador.Navegador LogisticaNavProveedores;
         private System.Windows.Forms.Label LogisticaLblProveedor;
     }
 }

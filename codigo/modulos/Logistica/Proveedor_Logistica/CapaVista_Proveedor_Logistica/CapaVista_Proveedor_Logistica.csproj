@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaControlador_Proveedor_Logistica">
+    <Reference Include="CapaControlador_Proveedor_Logistica, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CapaControlador_Proveedor_Logistica\bin\Debug\CapaControlador_Proveedor_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="CapaVista_Navegador">
@@ -61,6 +62,7 @@
     <EmbeddedResource Include="Formularios\FrmProveedor.resx">
       <DependentUpon>FrmProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RpReporteProveedor.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
