@@ -13,11 +13,11 @@ using System.Windows.Forms;
 using CapaVista_Logistica.Formularios;
 
 using CapaVista_Ventas;
-using CapaVista_Logistica.Formularios;
+
 using CapaVista_Consultas;
 using CapaVista_Contabilidad;
 using CapaVista_Compras;
-
+using CapaVista_ExamenF;
 
 /*
  * ============================================================
@@ -82,8 +82,14 @@ namespace CapaVista_Seguridad
                     case "Seguridad":
                         principal = new FrmMDISeguridad();
                         break;
-                    
-                  case "Logistica":
+
+                    case "Examen":
+                        var Examen = new CapaVista_ExamenF.Formularios.FrmReporteDirectores();
+                        principal = Examen;
+                        break;
+
+
+                    case "Logistica":
                     var MDILogistica = new CapaVista_Logistica.Formularios.FrmMDILogistica();
                       MDILogistica.LogisticaMetActualizarInfoUsuario(
                      ClsSesionSeguridad.NombreEmpleado,
@@ -130,6 +136,8 @@ namespace CapaVista_Seguridad
                         ClsSesionSeguridad.SeguridadMetRolesComoTexto());
                         principal = MdiRrhh;
                         break;
+
+
 
                     default:
                         principal = new FrmMDISeguridad();

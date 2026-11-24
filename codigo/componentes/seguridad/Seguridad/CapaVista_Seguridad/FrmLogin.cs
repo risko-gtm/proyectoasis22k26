@@ -116,5 +116,10 @@ namespace CapaVista_Seguridad
         {
             SeguridadTxtContraseña.PasswordChar = SeguridadChkMostrarContra.Checked ? '\0' : '*';
         }
+
+        private void SeguridadCmbMDI_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
